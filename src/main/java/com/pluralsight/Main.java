@@ -38,5 +38,15 @@ public class Main {
         System.out.println("Regular Hours: " + emp.getRegularHours());
         System.out.println("Overtime Hours: " + emp.getOvertimeHours());
         System.out.println("Total Pay: $" + emp.getTotalPay());
+
+        room.checkIn();
+        System.out.println("After check in, occupied: " + room.isOccupied());
+        System.out.println("After check in, dirty: " + room.isDirty());
+
+        room.checkOut();
+        System.out.println("After check out, occupied: " + room.isOccupied());
+
+        room.cleanRoom();
+        System.out.println("After cleaning, available: " + room.isAvailable());
     }
 }

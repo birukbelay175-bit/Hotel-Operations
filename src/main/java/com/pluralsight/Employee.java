@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Employee {
-
+    private int punchInTime;
     private int employeeId;
     private String name;
     private String department;
@@ -60,5 +60,6 @@ public class Employee {
         double overtimePay = getOvertimeHours() * payRate * 1.5;
 
         return regularPay + overtimePay;
+
     }
 }

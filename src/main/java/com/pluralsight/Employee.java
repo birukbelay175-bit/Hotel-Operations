@@ -60,6 +60,12 @@ public class Employee {
         double overtimePay = getOvertimeHours() * payRate * 1.5;
 
         return regularPay + overtimePay;
+    }
+    public void punchIn(int time) {
+        punchInTime = time;
+    }
 
+    public void punchOut(int time) {
+        hoursWorked += time - punchInTime;
     }
 }

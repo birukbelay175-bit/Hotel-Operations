@@ -29,7 +29,8 @@ public class Main {
 
         // -------- EMPLOYEE TEST --------
         Employee emp = new Employee(1, "John", "IT", 20.0, 45);
-
+        emp.punchIn(9);
+        emp.punchOut(17);
         System.out.println("EMPLOYEE TEST");
         System.out.println("Name: " + emp.getName());
         System.out.println("Department: " + emp.getDepartment());
@@ -48,5 +49,6 @@ public class Main {
 
         room.cleanRoom();
         System.out.println("After cleaning, available: " + room.isAvailable());
+
     }
 }

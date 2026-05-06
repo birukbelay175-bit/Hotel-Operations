@@ -17,48 +17,40 @@ public class Room {
         return numberOfBeds;
     }
 
-    public void setNumberOfBeds(int numberOfBeds) {
-        this.numberOfBeds = numberOfBeds;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public boolean isOccupied() {
         return occupied;
     }
 
-    public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
-    }
-
     public boolean isDirty() {
         return dirty;
     }
 
-    public void setDirty(boolean dirty) {
-        this.dirty = dirty;
-    }
-
-    // Derived getter (IMPORTANT)
     public boolean isAvailable() {
         return !occupied && !dirty;
     }
 
-    public void checkIn() {
-        occupied = true;
-        dirty = true;
+    public boolean checkIn() {
+        if (isAvailable()) {
+            occupied = true;
+            dirty = true;
+            return true;
+        }
+        return false;
     }
 
-    public void checkOut() {
+    public void checkout() {
         occupied = false;
     }
-    public void cleanRoom() {
-        dirty = false;
+
+    public boolean cleanRoom() {
+        if (!occupied) {
+            dirty = false;
+            return true;
+        }
+        return false;
     }
 }

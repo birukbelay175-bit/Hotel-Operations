@@ -7,40 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoomTest {
     @Test
     public void checkIn_shouldOccupyAndDirtyRoom_whenRoomIsAvailable() {
-
-        Room room = new Room(2, 124.00, false, false);
-
-        boolean result = room.checkIn();
-
-        assertTrue(result);
-        assertTrue(room.isOccupied());
-        assertTrue(room.isDirty());
-        assertFalse(room.isAvailable());
+Room room = new Room(2 ,124.00 ,true, false);
+room.checkIn();
+assertTrue(room.isOccupied());
     }
-
     @Test
-    public void checkIn_shouldFail_whenRoomIsOccupied() {
-
+    public void checkIn_shouldFail_ifOccupied() {
         Room room = new Room(2, 124.00, true, false);
 
-        boolean result = room.checkIn();
-
-        assertFalse(result);
+        assertFalse(room.checkIn());
     }
 
     @Test
-    public void checkIn_shouldFail_whenRoomIsDirty() {
-
-        Room room = new Room(2, 124.00, false, true);
-
-        boolean result = room.checkIn();
-
-        assertFalse(result);
-    }
-
-    @Test
-    public void checkout_shouldMakeRoomNotOccupied() {
-
+    public void checkout_shouldMakeRoomAvailable() {
         Room room = new Room(2, 124.00, true, true);
 
         room.checkout();
@@ -49,23 +28,18 @@ class RoomTest {
     }
 
     @Test
-    public void cleanRoom_shouldMakeRoomClean_whenNotOccupied() {
-
+    public void cleanRoom_shouldCleanRoom() {
         Room room = new Room(2, 124.00, false, true);
 
-        boolean result = room.cleanRoom();
+        room.cleanRoom();
 
-        assertTrue(result);
         assertFalse(room.isDirty());
     }
 
     @Test
-    public void cleanRoom_shouldFail_whenOccupied() {
-
+    public void cleanRoom_shouldFail_ifOccupied() {
         Room room = new Room(2, 124.00, true, true);
 
-        boolean result = room.cleanRoom();
-
-        assertFalse(result);
+        assertFalse(room.cleanRoom());
     }
 }

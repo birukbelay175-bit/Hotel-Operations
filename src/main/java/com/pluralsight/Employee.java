@@ -1,14 +1,15 @@
 package com.pluralsight;
 
+import java.time.LocalDateTime;
+
 public class Employee {
-    private int punchInTime;
+    private double punchInTime;
     private int employeeId;
     private String name;
     private String department;
     private double payRate;
     private double hoursWorked;
 
-    // Constructor (THIS WAS MISSING)
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
         this.name = name;
@@ -17,7 +18,6 @@ public class Employee {
         this.hoursWorked = hoursWorked;
     }
 
-    // Getters (THIS WAS MISSING)
     public int getEmployeeId() {
         return employeeId;
     }
@@ -38,7 +38,6 @@ public class Employee {
         return hoursWorked;
     }
 
-    // Derived methods
     public double getRegularHours() {
         if (hoursWorked <= 40) {
             return hoursWorked;
@@ -61,11 +60,23 @@ public class Employee {
 
         return regularPay + overtimePay;
     }
+
     public void punchIn(int time) {
         punchInTime = time;
     }
 
+    public void punchIn() {
+        LocalDateTime now = LocalDateTime.now();
+        punchInTime = now.getHour() + (now.getMinute() / 60.0);
+    }
+
     public void punchOut(int time) {
         hoursWorked += time - punchInTime;
+    }
+
+    public void punchOut() {
+        LocalDateTime now = LocalDateTime.now();
+        double currentTime = now.getHour() + (now.getMinute() / 60.0);
+        hoursWorked += currentTime - punchInTime;
     }
 }
